@@ -1,0 +1,36 @@
+{
+  "name": "contextual-multimethods",
+  "version": "0.0.0",
+  "description": "An experimental implementation of contextual multimethods",
+  "main": "./src/index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "jsverify": "^0.7.4",
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robotlolita/contextual-multimethods.git"
+  },
+  "keywords": [
+    "contextual",
+    "multimethods",
+    "adhoc",
+    "hierarchies",
+    "siren"
+  ],
+  "author": "Quildreen Motta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robotlolita/contextual-multimethods/issues"
+  },
+  "homepage": "https://github.com/robotlolita/contextual-multimethods#readme"
+}

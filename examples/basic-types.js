@@ -87,3 +87,33 @@ describe('Precise arithmetic', () => {
   });
 });
 
+
+const PromoteArithmetic = new Context();
+PromoteArithmetic.define('add')
+  .add([Integer, Integer], (a, b) => int32(a.value + b.value)) // a proper implementation'd use bigint
+  .add([Decimal, Decimal], (a, b) => float64(a.value + b.value)) // a proper implementation'd use bigdec
+  .add([Integer, Decimal], (a, b) => float64(a.value + b.value))
+  .add([Decimal, Integer], (a, b) => float64(a.value + b.value));
+
+
+describe('Promote arithmetic', () => {
+  const { add } = PromoteArithmetic.methods;
+
+  describe('Types should be promoted in operations', () => {
+    property('int + int → int', 'integer', 'integer', (a, b) => {
+      return add(int8(a), int16(b)).has(Int32);
+    });
+
+    property('dec + dec → dec', 'number', 'number', (a, b) => {
+      return add(float64(a), float64(b)).has(Float64);
+    });    
+
+    property('int + dec → dec', 'integer', 'number', (a, b) => {
+      return add(int16(a), float64(b)).has(Float64);
+    });
+
+    property('dec + int → dec', 'number', 'integer', (a, b) => {
+      return add(float64(a), int32(b)).has(Float64);
+    });
+  });
+});
